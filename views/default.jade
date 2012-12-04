@@ -1,0 +1,26 @@
+- if (typeof title === 'undefined')
+	- title = ''
+!!! 5
+html(lang="en")
+	head
+		title= title
+		block scripts
+			script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+			script(src='/js/prettify.js')
+			script
+				$(document).ready(function () {
+					prettyPrint();
+				});
+		link(rel='stylesheet', href='/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/css/bootstrap-responsive.min.css')
+		link(rel='stylesheet', href='/css/prettify.css')
+	body
+		div.navbar
+			div.navbar-inner
+				div.container
+					block navbar
+						a.brand(href="/") quakejs
+		div#content.container
+			.row
+				.span9
+					h1 Coming soon.

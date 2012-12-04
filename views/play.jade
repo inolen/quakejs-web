@@ -1,0 +1,24 @@
+html(lang="en")
+	head
+		title quakejs
+		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+		script(src='/js/require.min.js')
+		script(src='/js/prettify.js')
+		script
+			require.config({
+				paths: {
+					'system/browser/sys': 'game/bin/q3-browser-min'
+				}
+			});
+
+			require(['system/browser/sys'], function (sys) {
+				sys.Init();
+			});			
+		link(rel='stylesheet', href='css/main.css')
+	body
+		div#viewport-frame
+			canvas#viewport
+				Sorry, but your browser does not support WebGL or does not have it enabled.
+				To get a WebGL-enabled browser, please see:
+				<a href="http://get.webgl.org/" target="_blank">http://get.webgl.org/</a>
+			div#viewport-ui

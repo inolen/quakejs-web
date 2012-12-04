@@ -1,0 +1,7 @@
+{
+  "port": 9000,
+  "disqus": "inolen",
+  "paths": {
+    "articles": "articles"
+  }
+}
