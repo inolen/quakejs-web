@@ -16,7 +16,7 @@ var config = JSON.parse(fs.readFileSync(__dirname + '/config.json','utf8'));
  * Start with static data, then registered routes (app.router) and then move onto the error handlers.
  */
 app.use(express.compress());
-app.use(express.static(__dirname + '/public', { maxAge: 86400000 }));
+app.use(express.static(__dirname + '/public'));
 // For any non-static resource, lets add these helper variables.
 app.use(function (req, res, next) {
 	res.locals.config = config;

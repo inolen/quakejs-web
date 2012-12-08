@@ -1,5 +1,5 @@
 {
-  "port": 9000,
+  "port": 8081,
   "disqus": "inolen",
   "paths": {
     "articles": "articles"
