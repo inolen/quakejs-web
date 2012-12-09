@@ -96,3 +96,4 @@ async.waterfall([
  * Start listening!
  */
 app.listen(config.port);
+console.log('Server is now listening on port', config.port);
