@@ -10,6 +10,7 @@ var config = {
 	paths: {
 		articles: 'articles'
 	},
+	gameRoot: '../quakejs',
 	assets: {
 		host: 'localhost',
 		port: 9000
