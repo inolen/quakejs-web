@@ -18,7 +18,7 @@ var config = {
 	}
 };
 try {
-	var data = require('config.json');
+	var data = require('./config.json');
 	_.extend(config, data);
 } catch (e) {
 }
