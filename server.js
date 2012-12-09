@@ -4,31 +4,55 @@ var async = require('async');
 var express = require('express');
 var fs = require('fs');
 
-var config = JSON.parse(fs.readFileSync(__dirname + '/config.json','utf8'));
+var config = {
+	port: 8080,
+	disqus: 'inolen',
+	paths: {
+		articles: 'articles'
+	},
+	assets: {
+		host: 'localhost',
+		port: 9000
+	}
+};
+try {
+	var data = require('config.json');
+	_.extend(config, data);
+} catch (e) {
+}
 
 /**
  * Start express.js HTTP server.
  */
- var app = express();
+var app = express();
+
+app.locals.config = config;
 
 /**
  * Set stack of middleware used to resolve requests.
  * Start with static data, then registered routes (app.router) and then move onto the error handlers.
  */
 app.use(express.compress());
+
 app.use(express.static(__dirname + '/public'));
+
 // For any non-static resource, lets add these helper variables.
 app.use(function (req, res, next) {
 	res.locals.config = config;
 	res.locals.request = req;
 	next();
 });
+
+// Add in custom routes.
 app.use(app.router);
+
+// Finally, add in error handlers.
 app.use(function (err, req, res, next) {
 	console.log(err);
 	res.status(500);
 	res.render('500');
 });
+
 app.use(function (req, res) {
 	res.status(404);
 	res.render('404');
