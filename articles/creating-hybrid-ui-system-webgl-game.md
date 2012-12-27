@@ -80,7 +80,7 @@ After rendering each view, we check for those data attributes and use our filesy
 
 ## Summary
 
-While emulating some of these events is a bit frustrating up front, it pays off in the long run. Creating web-based UI is, even with all of its issues, the easiest experience I've had in my years of Win32 / MFC / .NET work. Emulating the DOM to persist this experience to the game world has been a huge overall win.
+While emulating some of these events is a bit frustrating up front, it pays off in the long run. Creating web-based UI is, even with all of its issues, the easiest experience I've had in my years of Win32 / MFC / .NET UI work. Emulating the DOM events to persist this experience to the game world has been a huge overall win.
 
 The HTML / CSS / DOM stack has been one of the most battle tested UI platforms of the past decade and with it, has some of the best resources available for working with it to create solid user interfaces - take advantage of it!
 
