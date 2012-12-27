@@ -3,7 +3,7 @@ Published: December 27, 2012
 
 UI work is never easy. Layout engines suck, custom styling of elements is overly complex, and targetting different screen resolutions is often completely uncharted territory.
 
-With that said, I decided to take advantage of the DOM / CSS for our UI layout and styling without a second's hesiation.
+With that said, I decided to take advantage of the DOM / CSS for our UI layout and styling without a moment's hesiation.
 
 **Pros**
 
