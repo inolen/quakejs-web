@@ -15,7 +15,7 @@ With that said, I decided to take advantage of the DOM / CSS for our UI layout a
 **Cons**
 
  * Games often expect the UI to be rendered each frame. Unfortunately, rendering DOM is slow meaning our UI must be programmed very defensively. Using proper models to represent the data for your views can help out with this (we're using [backbone.js](http://www.backbonejs.org)).
- * We won't receive the normal DOM events since we're trapping user input in our game (e.g. through requestPointerLock). A layer must be created that emulates DOM events such as `click` from the trapped input in order to provide the same familiar ecosystem for frontend engineers.
+ * We won't receive the normal DOM events since we're trapping user input in our game (e.g. through requestPointerLock). A layer must be created that emulates DOM events such as `click` from the trapped input in order to provide the same familiar ecosystem.
  * It may not be possible to directly access your image assets through <img> tags and background styles.
 
 Again, having worked with enough difficult UI systems, the first pro was enough to sway me. After some initial tests showed that overlaying my UI on my canvas wouldn't impose any significant performance penalty, I was ready to get started.
