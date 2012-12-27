@@ -22,7 +22,8 @@ html(lang="en")
 			.row
 				.span3
 					#sidebar
-						img#logo(src='/img/logo.png')
+						a(href='/')
+							img#logo(src='/img/logo.png')
 						ul#side-nav
 							li: a(href='/', class=(request.url === '/' || request.url.indexOf('/articles') === 0) ? 'active': '') Blog
 							li: a(href='/media', class=(request.url.indexOf('/media') === 0) ? 'active': '') Media
