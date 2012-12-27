@@ -84,4 +84,4 @@ While emulating some of these events is a bit frustrating up front, it pays off 
 
 The HTML / CSS / DOM stack has been one of the most battle tested UI platforms of the past decade and with it, has some of the best resources available for working with it to create solid user interfaces - take advantage of it!
 
-![quakejs UI](/articles/creating-hybrid-ui-system-webgl-game/ui.jpg)
+![quakejs UI](/articles/creating-hybrid-ui-system-webgl-games/ui.jpg)
