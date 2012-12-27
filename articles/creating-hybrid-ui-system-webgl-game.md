@@ -14,8 +14,8 @@ With that said, I decided to take advantage of the DOM / CSS for our UI layout a
 
 **Cons**
 
- * Since we're trapping user keyboard and mouse input in our fullscreen game, we must create a layer that emulates DOM events such as `click` from our trapped input in order to provide the same familiar ecosystem for frontend engineers.
  * Games often expect the UI to be rendered each frame. Unfortunately, rendering DOM is slow meaning our UI must be programmed very defensively. Using proper models to represent the data for your views can help out with this (we're using [backbone.js](http://www.backbonejs.org)).
+ * Since we're trapping user keyboard and mouse input in our fullscreen game, we must create a layer that emulates DOM events such as `click` from our trapped input in order to provide the same familiar ecosystem for frontend engineers.
  * It may not be possible to directly access your image assets through <img /> tags and background styles.
 
 Again, having worked with enough difficult UI systems, the first pro was enough to sway me. After some initial tests showed that overlaying my UI on my canvas wouldn't impose any significant performance penalty, I was ready to get started.
