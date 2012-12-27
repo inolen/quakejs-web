@@ -1,7 +1,7 @@
 Title: Creating a hybrid UI system for WebGL games
 Published: December 27, 2012
 
-UI work is never easy. Layout engines are full of kludges, custom styling of elements is overly complex, and targetting different screen resolutions is often completely uncharted territory.
+UI work is never easy. Layout engines are full of kludges, styling elements can be overly complex, and targetting different screen resolutions is often completely uncharted territory.
 
 With that said, I decided to take advantage of the DOM / CSS for our UI layout and styling without a moment's hesiation.
 
