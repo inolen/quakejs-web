@@ -2,8 +2,9 @@ extends default
 
 block content
 	article.article-full
-		header.page-header
-			h1 #{article.title}&nbsp;
+		.page-header
+			h1.page-title
+				span #{article.title}&nbsp;
 				small !{article.published.formatted}
 		!{article.body}
 		hr

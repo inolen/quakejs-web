@@ -3,8 +3,9 @@ extends default
 block content
 	section
 		each article in articles
-			article.article-description
-				h2
-					a(href=article.url) #{article.title}&nbsp;
-					small !{article.published.formatted}
+			article.article-summary
+				.page-header
+					h2.page-title
+						a(href=article.url) #{article.title}&nbsp;
+						small !{article.published.formatted}
 				!{article.description}

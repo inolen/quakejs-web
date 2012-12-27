@@ -1,0 +1,39 @@
+extends default
+
+block content
+	section
+		.page-header
+			h1.page-title
+				span= title
+		p Here's a dump of screenshots in reverse chronological order from quakejs's development.
+		ul.thumbnails
+			li.span3
+				a.thumbnail(href='/img/media/005.jpg', rel='lightbox[media]')
+					img(src='/img/media/005.jpg')
+					.caption
+						p Getting a functional UI has been the latest push. The UI is an interesting hybrid - the views are rendered with backbone.js, and a small layer exists that emulates DOM events (click, hover, etc.) as part of the core UI module.
+			li.span3
+				a.thumbnail(href='/img/media/004.jpg', rel='lightbox[media]')
+					img(src='/img/media/004.jpg')
+					.caption
+						p In the midst of working on getting assets CDN'd and simplifying dedicated server deployment, lots of net testing was going down. Here I'm playing around in an old Rocket Arena 3 map testing Clan Arena mode.
+			li.span3
+				a.thumbnail(href='/img/media/003.jpg', rel='lightbox[media]')
+					img(src='/img/media/003.jpg')
+					.caption
+						p With the new renderer work, large maps were struggling. After trimming the fat from server snapshots by only sending entities that were potentially visible, a large number of models were able to be culled from each scene. Also, static meshes started being stored in vbos to help out. In the end, the game was back to a healthy 60 FPS across the board.
+			li.span3
+				a.thumbnail(href='/img/media/002.jpg', rel='lightbox[media]')
+					img(src='/img/media/002.jpg')
+					.caption
+						p After implementing static meshes, it was onto animating character models and lighting with the light volume data provided by the BSP.
+			li.span3
+				a.thumbnail(href='/img/media/001.jpg', rel='lightbox[media]')
+					img(src='/img/media/001.jpg')
+					.caption
+						p The renderer had a huge kickstart from the beginning thanks to Brandon Jones's original quake3 WebGL demo; this was the start of getting my own hands dirty in the renderer by adding support for quake3's md3 model format.
+			li.span3
+				a.thumbnail(href='/img/media/000.jpg', rel='lightbox[media]')
+					img(src='/img/media/000.jpg')
+					.caption
+						p Where the party all started! The various modules (client, server, renderer, etc.) had just started coming together and I had cobbled together the first semblance of net code.
