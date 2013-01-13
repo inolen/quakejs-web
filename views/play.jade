@@ -15,7 +15,8 @@ html(lang="en")
 			});
 
 			require(['system/browser/sys'], function (sys) {
-				sys.Init(REQUESTED_GAME_VERSION);
+				var root = document.getElementsByTagName('body')[0];
+				sys.Init(root, REQUESTED_GAME_VERSION);
 			});
 		link(rel='stylesheet', href='css/main.css')
 	body
