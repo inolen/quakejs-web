@@ -1,0 +1,14 @@
+extends default
+
+block content
+	section
+		.page-header
+			h1.page-title My Account
+				span(style='float:right')
+					a(href='/logout') Logout
+		p
+			h2 Welcome 
+				span=user.email 
+		- if (user.hasRoleSync('BETA_USER') )
+			p
+				b Beta user

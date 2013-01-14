@@ -36,6 +36,8 @@ html(lang="en")
 							li: a(href='/', class=(request.url === '/' || request.url.indexOf('/articles') === 0) ? 'active': '') Blog
 							li: a(href='/media', class=(request.url.indexOf('/media') === 0) ? 'active': '') Media
 							li: a(href='/about', class=(request.url.indexOf('/about') === 0) ? 'active': '') About
+							li: a(href='/auth/account', class=(request.url.indexOf('/auth/account') === 0) ? 'active': '') My Account
+							
 				.span9
 					#content
 						block content

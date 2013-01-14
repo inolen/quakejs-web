@@ -35,9 +35,13 @@ function createServer(config) {
 	 * Set stack of middleware used to resolve requests.
 	 * Start with static data, then registered routes (app.router) and then move onto the error handlers.
 	 */
+	
 	app.use(express.compress());
 	app.use(express.static(__dirname + '/public'));
-
+	app.use(express.bodyParser());
+	app.use(express.cookieParser('venus'));
+	app.use(express.session({ secret: 'venus' }));
+	
 	// For any non-static resource, lets add these helper variables.
 	app.use(function (req, res, next) {
 		res.locals.config = config;
@@ -50,7 +54,7 @@ function createServer(config) {
 
 		next();
 	});
-
+	
 	// Add in custom routes.
 	app.use(app.router);
 
@@ -64,7 +68,6 @@ function createServer(config) {
 		res.status(404);
 		res.render('404');
 	});
-
 	/**
 	 * Setup jade views as default.
 	 **/

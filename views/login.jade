@@ -1,0 +1,26 @@
+extends default
+
+block content
+	section
+		.page-header
+			h1.page-title
+				span QuakeJs login
+		p
+			form(style='margin:100px;',method='post')
+				table
+					tr
+						td
+						td(style='color:red')=locals.error||''
+					tr
+						td Email 
+						td
+							input(type='text',name='email')
+					tr
+						td Password 
+						td
+							input(type='password',name='password')
+					tr
+						td
+							a(href='/join') Join
+						td
+							input(type='submit')
