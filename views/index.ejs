@@ -1,0 +1,75 @@
+<% layout('default') -%>
+
+<% script(furl('/js/dashboard.js')) -%>
+<% script(furl('/js/master.js')) -%>
+<% script(furl('/js/practice.js')) -%>
+<% script(furl('/js/vendor/ejs.min.js')) -%>
+<% script(furl('/js/vendor/spin.min.js')) -%>
+
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function (event) {
+		var container = document.getElementById('practice-container');
+		practice.init(container, {
+			practice: new EJS({ url: '<%- furl('/practice.ejs') %>' }),
+			game: new EJS({ url: '<%- furl('/practice-game.ejs') %>' }),
+			mode: new EJS({ url: '<%- furl('/practice-mode.ejs') %>' }),
+			map: new EJS({ url: '<%- furl('/practice-map.ejs') %>' }),
+			bot: new EJS({ url: '<%- furl('/practice-bot.ejs') %>' })
+		});
+
+		var container = document.getElementById('servers-container');
+		var host = '<%- config.master.host %>';
+		var port = '<%- config.master.port %>';
+		dashboard.init(container, host, port, {
+			servers: new EJS({ url: '<%- furl('/servers.ejs') %>' }),
+			server: new EJS({ url: '<%- furl('/server.ejs') %>' })
+		});
+	});
+</script>
+
+<div id="banner" class="page-header">
+	<div class="container">
+		<div class="row">
+			<div class="span6">
+				<img id="banner-logo" src="img/logo-main.png" />
+			</div>
+			<div class="span6">
+				<div id="description">
+					<p>
+						QuakeJS is a port of <a href="http://ioquake3.org">ioquake3</a> to JavaScript with the help of <a href="https://github.com/kripken/emscripten">Emscripten</a>.
+					</p>
+					<p>
+						This project started to demonstrate the feasibility of browser-based gaming, and what better way than with a classic game whose core gameplay revolves around the kind of responsive APIs that are available with HTML5 today.
+					</p>
+					<p>
+						If you'd like to read more about the development of the project, check out <a href="http://www.inolen.com">my blog</a>. The project is available on <a href="http://www.github.com/inolen/quakejs">GitHub</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="content" class="container">
+	<div class="row">
+		<div class="span12">
+			<div class="gametype">
+				<h1 class="section-title">Practice Match</h1>
+				<p>
+					Play a practice match against bots.
+				</p>
+				<p>
+					Note, the bot performance is pretty sluggish in CPMA in comparison to Vanilla Q3. If you'd like to try out a 5+ player match, stick with Vanilla Q3.
+				</p>
+				<div id="practice-container"></div>
+			</div>
+			<div class="gametype">
+				<h1 class="section-title">Online Match</h1>
+				<p>
+					Join in on the action with others. The current servers are running the <a href="http://playmorepromode.org/">Challenge Pro Mode Arena</a> and <a href="http://www.moddb.com/mods/q3f">Quake 3 Fortress</a> mods.
+				</p>
+				<div id="servers-container"></div>
+			</div>
+		</div>
+	</div>
+</div>

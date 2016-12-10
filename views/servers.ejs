@@ -1,0 +1,21 @@
+<div id="servers-status">&nbsp;</div>
+
+<table id="servers-list" class="table">
+	<thead>
+		<tr>
+			<th>Ping</th>
+			<th>Game</th>
+			<th>Name</th>
+			<th>Map</th>
+			<th>Players</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% if (typeof servers !== 'undefined') { %>
+	<% servers.forEach(function (server) { %>
+	<%= serverView.render({ server: server }) %>
+	<% }); %>
+	<% } %>
+	</tbody>
+</table>

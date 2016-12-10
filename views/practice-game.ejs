@@ -1,0 +1,12 @@
+<div class="control-group">
+	<div class="control-label" for="game">
+		Game
+	</div>
+	<div class="controls">
+		<select id="game">
+			<% games.forEach(function (game, i) { %>
+			<option value="<%= i %>"><%= game.description %></option>
+			<% }); %>
+		</select>
+	</div>
+</div>

@@ -1,0 +1,5 @@
+.*
+!/.gitignore
+config.json
+/node_modules
+/public/baseq3/*

@@ -1,0 +1,24 @@
+<%
+	var defaultGame = games[0];
+	var defaultMode = defaultGame.modes[0];
+	var defaultMap = defaultMode.maps[0];
+%>
+<form id="practice-match" class="form-horizontal">
+	<div id="game-container">
+		<%= gameView.render({ games: games }) %>
+	</div>
+	<div id="mode-container">
+		<%= modeView.render({ modes: defaultGame.modes }) %>
+	</div>
+	<div id="map-container">
+		<%= mapView.render({ maps: defaultMode.maps }) %>
+	</div>
+	<div id="bot-container">
+		<%= botView.render({ maxBots: maxBots, botSkills: defaultGame.botSkills, arenas: defaultMap.arenas }) %>
+	</div>
+	<div class="control-group">
+		<div class="controls">
+			<button class="btn btn-success" type="submit">Start match</button>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,42 @@
+<div class="control-group">
+	<div class="control-label" for="bot-skill">
+		Bot skill
+	</div>
+	<div class="controls">
+		<select id="bot-skill">
+			<% botSkills.forEach(function (skill) { %>
+			<option value="<%= skill.value %>"><%= skill.description %></option>
+			<% }); %>
+		</select>
+	</div>
+</div>
+
+<% if (!arenas) { %>
+<div class="control-group">
+	<div class="control-label" for="bot-count">
+		Number of bots
+	</div>
+	<div class="controls">
+		<select id="bot-count">
+			<% for (var j = 0; j <= maxBots; j++) { %>
+				<option value="<%= j %>"><%= j %></option>
+			<% } %>
+		</select>
+	</div>
+</div>
+<% } else { %>
+<% arenas.forEach(function (arena) { %>
+	<div class="control-group">
+		<div class="control-label" for="bot-count-<%= arena.number %>">
+			Number of bots <%= arena.description %>
+		</div>
+		<div class="controls">
+			<select id="bot-count-<%= arena.number %>">
+				<% for (var i = 0; i <= maxBots; i++) { %>
+				<option value="<%= i %>"><%= i %></option>
+				<% } %>
+			</select>
+		</div>
+	</div>
+<% }); %>
+<% } %>

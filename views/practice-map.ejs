@@ -1,0 +1,12 @@
+<div class="control-group">
+	<div class="control-label" for="map">
+		Map
+	</div>
+	<div class="controls">
+		<select id="map">
+			<% maps.forEach(function (map, i) { %>
+			<option value="<%= i %>"><%= map.name + ' - ' + map.description %></option>
+			<% }); %>
+		</select>
+	</div>
+</div>
