@@ -1,6 +1,6 @@
 <td><%= info.ping %></td>
 <td><%= info.game ? info.game : "baseq3" %></td>
-<td><%= info.hostname %></td>
+<td><%= quakeColor.htmlEscapeWithColor(info.hostname) %></td>
 <td><%= info.mapname %></td>
 <td style="text-align: center"><%= info.g_humanplayers %> / <%= info.g_botplayers %> / <%= info.sv_maxclients %>
 </td>
