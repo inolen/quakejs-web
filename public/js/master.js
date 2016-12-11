@@ -27,7 +27,7 @@ master._stripOOB = function (buffer) {
 	var i_end = buffer.byteLength;
 
 	/* ignore trailing whitespace */
-	while (i_end > 4 && view.getUint8(i_end - 1) <= 32) {
+	while (i_end > i_start && view.getUint8(i_end - 1) <= ' '.charCodeAt(0)) {
 		--i_end;
 	}
 
