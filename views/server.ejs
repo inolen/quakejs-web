@@ -1,6 +1,7 @@
 <td><%= info.ping %></td>
-<td><%= info.gamename %></td>
-<td><%= info.sv_hostname %></td>
+<td><%= info.game ? info.game : "baseq3" %></td>
+<td><%= info.hostname %></td>
 <td><%= info.mapname %></td>
-<td><%= info.players.length %> / <%= info.sv_maxclients %></td>
+<td style="text-align: center"><%= info.g_humanplayers %> / <%= info.g_botplayers %> / <%= info.sv_maxclients %>
+</td>
 <td><span>Join&nbsp;<i class="icon-chevron-right"></i></span></td>

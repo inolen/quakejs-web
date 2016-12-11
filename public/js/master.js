@@ -23,7 +23,15 @@ master._stripOOB = function (buffer) {
 	}
 
 	var str = '';
-	for (var i = 4 /* ignore leading -1 */; i < buffer.byteLength - 1 /* ignore trailing \0 */; i++) {
+	var i_start = 4; /* ignore leading -1 */
+	var i_end = buffer.byteLength;
+
+	/* ignore trailing whitespace */
+	while (i_end > 4 && view.getUint8(i_end - 1) <= 32) {
+		--i_end;
+	}
+
+	for (var i = i_start; i < i_end; i++) {
 		var c = String.fromCharCode(view.getUint8(i));
 		str += c;
 	}
@@ -95,6 +103,37 @@ master._parsePlayers = function (str) {
 	return players;
 };
 
+master._parseStatusResponse = function (data) {
+	var self = this;
+	if (data.indexOf('statusResponse\n') !== 0) {
+		throw new Error('Invalid getstatus response: ' + data);
+	}
+	data = data.substr(15);
+
+	var idx = data.indexOf('\n');
+	var variableData = idx !== -1 ? data.substr(0, idx) : data;
+	var playerData = idx !== -1 ? data.substr(idx) : null;
+
+	var info = self._parseInfoString(variableData);
+	info.players = self._parsePlayers(playerData);
+	return info;
+};
+
+master._parseInfoResponse = function (data) {
+	var self = this;
+	if (data.indexOf('infoResponse\n') !== 0) {
+		throw new Error('Invalid getinfo response: ' + data);
+	}
+	data = data.substr(13);
+	var info = self._parseInfoString(data);
+
+	// Compute the number of bots for the template
+	info.g_botplayers = info.clients - info.g_humanplayers;
+
+	console.log("RETURNING INFO:", info);
+	return info;
+};
+
 master.connect = function (address, port, callback) {
 	var self = this;
 
@@ -131,16 +170,21 @@ master.connect = function (address, port, callback) {
 master.scanServer = function (server, callback) {
 	var self = this;
 
-	var done = false;
 	var ws = new WebSocket('ws://' + server.addr + ':' + server.port);
 	ws.binaryType = 'arraybuffer';
-
 	var start, end;
+	var finish = function (err, info) {
+		if (callback) {
+			callback(err, info);
+			callback = null;
+		}
+		ws.close();
+	};
 
 	ws.onopen = function () {
 		start = window.performance.now();
 
-		var buffer = self._formatOOB('getstatus');
+		var buffer = self._formatOOB('getinfo');
 
 		ws.send(buffer);
 	};
@@ -149,32 +193,19 @@ master.scanServer = function (server, callback) {
 		end = window.performance.now();
 
 		var data = self._stripOOB(event.data);
-
-		if (!done) {
-			if (data.indexOf('statusResponse\n') !== 0) {
-				callback(new Error('Invalid getinfo response: ' + data));
-			} else {
-				data = data.substr(15);
-
-				var idx = data.indexOf('\n');
-				var variableData = idx !== -1 ? data.substr(0, idx) : data;
-				var playerData = idx !== -1 ? data.substr(idx) : null;
-
-				var info = self._parseInfoString(variableData);
-				info.ping = parseInt(end - start, 10);
-				info.players = self._parsePlayers(playerData);
-
-				callback(null, info);
-			}
-			done = true;
+		var info;
+		try {
+			info = self._parseInfoResponse(data);
+		} catch (err) {
+			finish(err);
+			return;
 		}
+		info.ping = parseInt(end - start, 10);
+		finish(null, info);
 	};
 
 	ws.onclose = function (ev) {
-		if (!done) {
-			callback(new Error(ev.reason));
-			done = true;
-		}
+		finish(new Error(ev.reason));
 	};
 };
 
