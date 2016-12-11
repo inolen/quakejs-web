@@ -130,7 +130,6 @@ master._parseInfoResponse = function (data) {
 	// Compute the number of bots for the template
 	info.g_botplayers = info.clients - info.g_humanplayers;
 
-	console.log("RETURNING INFO:", info);
 	return info;
 };
 
