@@ -1,9 +1,9 @@
-<td><%= info.ping %></td>
-<td><%= info.game ? info.game : "baseq3" %></td>
+<td><%= htmlEscape(info.ping) %></td>
+<td><%= htmlEscape(info.game ? info.game : "baseq3") %></td>
 <td><%= quakeColor.htmlEscapeWithColor(info.hostname) %></td>
-<td><%= info.mapname %></td>
+<td><%= htmlEscape(info.mapname) %></td>
 <td>
-  <%= info.g_humanplayers %> / <%= info.sv_maxclients %>
+  <%= htmlEscape(info.g_humanplayers) %> / <%= htmlEscape(info.sv_maxclients) %>
   <% if (info.g_botplayers > 0) { %>
     <span style="color: #666666">+ <%= info.g_botplayers %> bot<%= info.g_botplayers > 1 ? "s" : "" %></span>
   <% } %>

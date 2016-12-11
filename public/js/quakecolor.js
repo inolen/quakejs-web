@@ -2,15 +2,6 @@
 
 var quakeColor = root.quakeColor = {};
 
-function htmlEscape(s) {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
 function isAlphaNum(c) {
     var code = c.charCodeAt(0);
     return (code >= 48 && code <= 57) || (code >= 65 && code <= 90) || (code >= 97 && code <= 122);
