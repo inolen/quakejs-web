@@ -21120,7 +21120,7 @@ function copyTempDouble(ptr) {
       var gamepads = SDL.getGamepads();
       // The length is not the number of gamepads; check which ones are defined.
       for (var i = 0; i < gamepads.length; i++) {
-        if (gamepads[i] !== undefined) count++;
+        if (gamepads[i] !== undefined && gamepads[i] !== null) count++;
       }
       return count;
     }
